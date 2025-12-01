@@ -11,8 +11,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final BankAccountService bankAccountService;
     public void registerUser(User user){
-        userRepository.save(user);
-        bankAccountService.createAccountForUser(user);
+        User savedUser = userRepository.save(user);
+        bankAccountService.createAccountForUser(savedUser);
 
     }
 }
