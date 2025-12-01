@@ -23,5 +23,9 @@ public class TransactionRecord {
 
     private String type;              // DEPOSIT or WITHDRAW
     private BigDecimal amount;
+
+    @Builder.Default
     private LocalDateTime timestamp = LocalDateTime.now();
+
+
 }
