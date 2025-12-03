@@ -1,5 +1,6 @@
 package com.example.bank_app.controller;
 
+import com.example.bank_app.models.TransactionRecord;
 import com.example.bank_app.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import com.example.bank_app.service.UserService;
 import com.example.bank_app.service.BankAccountService;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,10 +22,12 @@ public class Controller {
     public void register(@RequestBody User user){
         userService.registerUser(user);
     }
+
     @GetMapping("/balance/{userId}")
     public BigDecimal getBalance(@PathVariable Long userId){
         return bankAccountService.getBalance(userId);
     }
+
     @PostMapping("/deposit/{userId}")
     public void deposit(@PathVariable Long userId,
                         @RequestBody BigDecimal amount){
@@ -40,5 +44,10 @@ public class Controller {
 
        }
         return ResponseEntity.ok("Withdrawal Successful");
+    }
+
+    @GetMapping("/showTx/{userId}")
+    public List<TransactionRecord> getRecords(@PathVariable Long userId){
+        return bankAccountService.showTransaction(userId);
     }
 }
