@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -66,6 +68,11 @@ public class BankAccountService {
 
         return true;
     }
+    public List<TransactionRecord> showTransaction(Long userId){
+        return txRepo.findByAccountId(userId);
+    }
+
+
 
 
 

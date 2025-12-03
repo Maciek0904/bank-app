@@ -26,6 +26,4 @@ public class TransactionRecord {
 
     @Builder.Default
     private LocalDateTime timestamp = LocalDateTime.now();
-
-
 }
